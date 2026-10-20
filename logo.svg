@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- Background Shield Gradient -->
+    <linearGradient id="vkShieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b20"/>
+      <stop offset="45%" stop-color="#081712"/>
+      <stop offset="100%" stop-color="#030806"/>
+    </linearGradient>
+
+    <!-- Outer Neon Lime Accent Gradient -->
+    <linearGradient id="vkLimeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2ff9e"/>
+      <stop offset="40%" stop-color="#d7ff4f"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <!-- Metallic White Gradient -->
+    <linearGradient id="vkWhiteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter for 3D Depth -->
+    <filter id="vkShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Shield Crest -->
+  <path d="M64 6 
+           L114 24 
+           C114 74 88 108 64 122 
+           C40 108 14 74 14 24 
+           Z" 
+        fill="url(#vkShieldGrad)" 
+        stroke="url(#vkLimeGlow)" 
+        stroke-width="3.5" 
+        stroke-linejoin="round"/>
+
+  <!-- Inner Trim Line -->
+  <path d="M64 13 
+           L107 28.5 
+           C107 72 83.5 102 64 114.5 
+           C44.5 102 21 72 21 28.5 
+           Z" 
+        stroke="rgba(215, 255, 79, 0.3)" 
+        stroke-width="1.2" 
+        fill="none"/>
+
+  <!-- Pitch Horizon Line -->
+  <path d="M26 44 Q64 58 102 44" stroke="rgba(215, 255, 79, 0.16)" stroke-width="1.5" fill="none"/>
+
+  <!-- Iconic Geodesic Football Crest (Top Center) -->
+  <g transform="translate(64, 33)">
+    <!-- Ball Outer Rim -->
+    <circle cx="0" cy="0" r="16" fill="#06140f" stroke="url(#vkLimeGlow)" stroke-width="2"/>
+    <!-- Central Pentagon -->
+    <polygon points="0,-6.5 6.2,-2 3.8,5.3 -3.8,5.3 -6.2,-2" fill="#d7ff4f"/>
+    <!-- Seam Vectors to Perimeter -->
+    <line x1="0" y1="-6.5" x2="0" y2="-16" stroke="#d7ff4f" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="6.2" y1="-2" x2="15.2" y2="-5" stroke="#d7ff4f" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="3.8" y1="5.3" x2="9.4" y2="13" stroke="#d7ff4f" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="-3.8" y1="5.3" x2="-9.4" y2="13" stroke="#d7ff4f" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="-6.2" y1="-2" x2="-15.2" y2="-5" stroke="#d7ff4f" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- VK Monogram with 3D Depth -->
+  <g filter="url(#vkShadow)">
+    <!-- V Letter: Left Facet (Metallic White) -->
+    <path d="M30 56 L46 96 L46 80 L38 56 Z" fill="url(#vkWhiteGrad)"/>
+    <!-- V Letter: Right Facet (Electric Lime) -->
+    <path d="M62 56 L46 96 L46 80 L54 56 Z" fill="url(#vkLimeGlow)"/>
+
+    <!-- K Letter: Vertical Stem (Metallic White) -->
+    <path d="M68 56 L76 56 L76 96 L68 96 Z" fill="url(#vkWhiteGrad)"/>
+    <!-- K Letter: Upper Branch (Electric Lime) -->
+    <path d="M76 74 L90 56 L99 56 L83 76 Z" fill="url(#vkLimeGlow)"/>
+    <!-- K Letter: Lower Branch (Electric Lime) -->
+    <path d="M80 72 L99 96 L89 96 L76 80 Z" fill="url(#vkLimeGlow)"/>
+  </g>
+
+  <!-- Stars / Elite Accreditation at Base -->
+  <g fill="#d7ff4f">
+    <!-- Center Star -->
+    <polygon points="64,105 65.5,108.5 69.5,108.8 66.5,111.2 67.5,115 64,112.8 60.5,115 61.5,111.2 58.5,108.8 62.5,108.5"/>
+    <!-- Left Star -->
+    <polygon points="50,102 51,104.5 53.8,104.7 51.7,106.4 52.4,109.1 50,107.5 47.6,109.1 48.3,106.4 46.2,104.7 49,104.5" opacity="0.85"/>
+    <!-- Right Star -->
+    <polygon points="78,102 79,104.5 81.8,104.7 79.7,106.4 80.4,109.1 78,107.5 75.6,109.1 76.3,106.4 74.2,104.7 77,104.5" opacity="0.85"/>
+  </g>
+</svg>
