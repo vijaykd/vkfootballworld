@@ -280,6 +280,15 @@
     }
 
     document.addEventListener('click', function(e) {
+      var banner = e.target.closest('.owner-portal-banner, a[href*="owner/inbox"]');
+      if (banner) {
+        e.preventDefault();
+        var target = window.location.pathname.includes('/vkfootballworld')
+          ? '/vkfootballworld/owner/inbox/'
+          : './owner/inbox/';
+        window.location.href = target;
+        return;
+      }
       var a = e.target.closest('a[href^="#"]');
       if (a) {
         var href = a.getAttribute('href');
