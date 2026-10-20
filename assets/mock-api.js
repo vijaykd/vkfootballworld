@@ -135,7 +135,7 @@
 
 
     // Handle /api/rating
-    if (path === '/api/rating') {
+    if (path === '/api/rating' || path.endsWith('/api/rating')) {
       const method = (init.method || 'GET').toUpperCase();
       const ratingKey = (init.headers && (init.headers['x-rating-key'] || init.headers.get?.('x-rating-key'))) ||
                         localStorage.getItem('vk-app-rating-key') || '';
@@ -154,7 +154,7 @@
     }
 
     // Handle /api/football
-    if (path === '/api/football') {
+    if (path === '/api/football' || path.endsWith('/api/football')) {
       const compareTeams = url.searchParams.getAll('compare');
       if (compareTeams && compareTeams.length > 0) {
         const stats = {};
@@ -172,7 +172,7 @@
     }
 
     // Handle /api/contact
-    if (path === '/api/contact') {
+    if (path === '/api/contact' || path.endsWith('/api/contact')) {
       const method = (init.method || 'GET').toUpperCase();
 
       if (method === 'GET') {
