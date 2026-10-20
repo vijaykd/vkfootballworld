@@ -8,6 +8,9 @@
   <link rel="icon" href="../../favicon.svg"/>
   <link rel="stylesheet" href="../../assets/index-4PPbBUC8.css"/>
   <style>
+    :root {
+      --lime: #d7ff4f;
+    }
     body {
       background: #07110e;
       color: #fff;
@@ -19,7 +22,7 @@
     .owner-header {
       background: #081410;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 20px clamp(20px, 4vw, 60px);
+      padding: 18px clamp(20px, 4vw, 60px);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -46,8 +49,13 @@
       font-size: 16px;
       letter-spacing: -0.02em;
     }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .back-link {
-      color: var(--lime);
+      color: #94a3b8;
       text-decoration: none;
       font-size: 12px;
       font-weight: 800;
@@ -55,19 +63,40 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
-      border: 1px solid rgba(215, 255, 79, 0.3);
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 6px;
       transition: all 0.2s ease;
     }
     .back-link:hover {
-      background: rgba(215, 255, 79, 0.1);
-      border-color: var(--lime);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .signout-btn {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .signout-btn:hover {
+      background: rgba(239, 68, 68, 0.22);
+      border-color: #ef4444;
+      color: #fff;
     }
     .owner-container {
       max-width: 1240px;
       margin: 0 auto;
       padding: 40px 24px 80px;
+      transition: filter 0.3s ease;
     }
     .metrics-row {
       display: grid;
@@ -99,23 +128,24 @@
     }
     .metric-card strong small {
       font-size: 16px;
-      color: var(--lime);
+      color: #64748b;
       font-weight: 700;
     }
     .inbox-layout {
       display: grid;
-      grid-template-columns: minmax(320px, 0.85fr) minmax(400px, 1.15fr);
+      grid-template-columns: 340px 1fr;
       gap: 24px;
-      align-items: start;
+      min-height: 560px;
+      background: #0b1813;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
     }
     .inbox-sidebar {
-      background: #0e1e18;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      overflow: hidden;
+      background: #081410;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       flex-direction: column;
-      min-height: 600px;
     }
     .sidebar-header {
       padding: 20px;
@@ -126,33 +156,32 @@
     }
     .sidebar-header h2 {
       font-size: 14px;
-      letter-spacing: 0.08em;
-      color: var(--lime);
-      margin: 0;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      margin: 0;
+      color: #fff;
       font-weight: 900;
     }
     .thread-list {
-      display: flex;
-      flex-direction: column;
+      flex: 1;
       overflow-y: auto;
-      max-height: 540px;
+      max-height: calc(100vh - 360px);
     }
     .thread-item {
       padding: 16px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.15s ease;
       display: flex;
       flex-direction: column;
       gap: 6px;
       text-align: left;
       background: transparent;
       border-left: 3px solid transparent;
-      color: inherit;
+      border-right: none;
+      border-top: none;
       width: 100%;
       box-sizing: border-box;
-      font: inherit;
     }
     .thread-item:hover {
       background: rgba(255, 255, 255, 0.03);
@@ -165,36 +194,33 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
+      gap: 8px;
     }
     .thread-nickname {
+      font-size: 13px;
       font-weight: 800;
       color: #fff;
     }
     .thread-topic {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--lime);
-      padding: 2px 8px;
-      border-radius: 4px;
       font-size: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      padding: 2px 6px;
+      border-radius: 4px;
       font-weight: 800;
+      letter-spacing: 0.05em;
     }
     .thread-subject {
       font-size: 13px;
       color: #cbd5e1;
-      font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .inbox-main {
-      background: #0e1e18;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
       padding: 28px;
       display: flex;
       flex-direction: column;
-      min-height: 600px;
     }
     .chat-header {
       padding-bottom: 18px;
@@ -303,6 +329,181 @@
       line-height: 1.6;
       margin: 12px auto 0;
     }
+
+    /* AUTHENTICATION OVERLAY & MODAL */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 8, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 24px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .auth-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .auth-card {
+      background: #0c1a14;
+      border: 1px solid rgba(215, 255, 79, 0.28);
+      border-radius: 16px;
+      padding: 36px 32px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), 0 0 50px rgba(215, 255, 79, 0.06);
+      box-sizing: border-box;
+      animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .auth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: var(--lime);
+      background: rgba(215, 255, 79, 0.1);
+      border: 1px solid rgba(215, 255, 79, 0.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .auth-card h2 {
+      font-size: 24px;
+      margin: 0 0 8px;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .auth-card p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #94a3b8;
+      margin: 0 0 24px;
+    }
+    .auth-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .auth-field label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #cbd5e1;
+      text-transform: uppercase;
+    }
+    .auth-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .auth-field input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    .auth-field input:focus {
+      border-color: var(--lime);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(215, 255, 79, 0.15);
+    }
+    .toggle-pw-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      transition: color 0.15s ease;
+    }
+    .toggle-pw-btn:hover {
+      color: #fff;
+    }
+    .auth-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .auth-options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .auth-options input[type="checkbox"] {
+      accent-color: var(--lime);
+      cursor: pointer;
+    }
+    .auth-submit-btn {
+      background: var(--lime);
+      color: #07110e;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+    .auth-submit-btn:hover {
+      background: #e2ff73;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(215, 255, 79, 0.2);
+    }
+    .auth-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      display: none;
+      animation: shake 0.3s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    .auth-footer-note {
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-top: 20px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 860px) {
       .inbox-layout {
         grid-template-columns: 1fr;
@@ -311,15 +512,59 @@
   </style>
 </head>
 <body>
+  <!-- AUTHENTICATION OVERLAY (PROTECTED ACCESS) -->
+  <div class="auth-overlay" id="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-badge">👑 OWNER ACCESS ONLY</div>
+      <h2>VK Owner Sign-In</h2>
+      <p>Enter your owner credentials to open your private inbox and manage visitor messages.</p>
+
+      <div class="auth-error" id="auth-error"></div>
+
+      <form id="auth-form" onsubmit="handleLogin(event)">
+        <div class="auth-field">
+          <label for="auth-username">Username</label>
+          <input type="text" id="auth-username" value="VK" placeholder="Enter owner username" autocomplete="username" required/>
+        </div>
+
+        <div class="auth-field">
+          <label for="auth-password">Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" id="auth-password" placeholder="Enter master password" autocomplete="current-password" required/>
+            <button type="button" class="toggle-pw-btn" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <div class="auth-options">
+          <label>
+            <input type="checkbox" id="auth-remember" checked/>
+            <span>Remember on this device</span>
+          </label>
+          <a href="../../" class="back-link" style="padding: 4px 8px; font-size: 11px;">← Cancel</a>
+        </div>
+
+        <button type="submit" class="auth-submit-btn" id="auth-submit-btn">SIGN IN TO INBOX →</button>
+      </form>
+
+      <div class="auth-footer-note">
+        🔒 Salted SHA-256 Cryptographic Authentication · Zero Plaintext Stored
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN INBOX APP (PROTECTED) -->
   <header class="owner-header">
     <a class="owner-brand" href="../../">
       <span class="owner-brand-badge">VK</span>
       <strong>VK FOOTBALL WORLD</strong>
     </a>
-    <a class="back-link" href="../../">← Return to Site</a>
+    <div class="header-actions">
+      <button type="button" class="signout-btn" onclick="signOut()">Sign Out 🔒</button>
+      <a class="back-link" href="../../">← Return to Site</a>
+    </div>
   </header>
 
-  <main class="owner-container">
+  <main class="owner-container" id="inbox-container">
     <div class="metrics-row">
       <div class="metric-card">
         <span>Average Rating</span>
@@ -381,6 +626,105 @@
   </main>
 
   <script>
+    // Cryptographic Salt & Salted Hash (Never stores plaintext password)
+    const AUTH_SALT = "vk_salt_9e4a8b71f02c4b8d";
+    const AUTH_HASH = "f44df6fafd89e7b951b6eb52188b65da2fa7506e68ff82ea0abde83dd7156817";
+    const SESSION_KEY = "vk_owner_auth_session";
+
+    async function computeSHA256(str) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function togglePasswordVisibility() {
+      const pwInput = document.getElementById('auth-password');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+      } else {
+        pwInput.type = 'password';
+      }
+    }
+
+    function isSessionValid() {
+      const session = sessionStorage.getItem(SESSION_KEY) || localStorage.getItem(SESSION_KEY);
+      if (!session) return false;
+      try {
+        const parsed = JSON.parse(session);
+        return parsed.hash === AUTH_HASH && parsed.authenticated === true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function setSession(remember) {
+      const payload = JSON.stringify({
+        authenticated: true,
+        hash: AUTH_HASH,
+        time: Date.now()
+      });
+      sessionStorage.setItem(SESSION_KEY, payload);
+      if (remember) {
+        localStorage.setItem(SESSION_KEY, payload);
+      }
+    }
+
+    function signOut() {
+      sessionStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(SESSION_KEY);
+      const overlay = document.getElementById('auth-overlay');
+      overlay.classList.remove('hidden');
+      document.getElementById('auth-password').value = '';
+      document.getElementById('auth-error').style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('auth-password').focus();
+      }, 100);
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const usernameInput = document.getElementById('auth-username').value.trim().toLowerCase();
+      const passwordInput = document.getElementById('auth-password').value;
+      const remember = document.getElementById('auth-remember').checked;
+      const errorEl = document.getElementById('auth-error');
+      const submitBtn = document.getElementById('auth-submit-btn');
+
+      // Valid usernames: 'vk', 'vijaykd', 'owner', 'admin'
+      const validUsernames = ['vk', 'vijaykd', 'owner', 'admin'];
+      if (!validUsernames.includes(usernameInput)) {
+        errorEl.textContent = 'Invalid username. Please use "VK".';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'VERIFYING...';
+
+      try {
+        const computed = await computeSHA256(AUTH_SALT + passwordInput);
+        if (computed === AUTH_HASH) {
+          // Success!
+          errorEl.style.display = 'none';
+          setSession(remember);
+          document.getElementById('auth-overlay').classList.add('hidden');
+          loadInbox();
+        } else {
+          errorEl.textContent = 'Incorrect password. Please verify and try again.';
+          errorEl.style.display = 'block';
+          document.getElementById('auth-password').select();
+        }
+      } catch (err) {
+        errorEl.textContent = 'Verification error. Please retry.';
+        errorEl.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SIGN IN TO INBOX →';
+      }
+    }
+
+    // Inbox Data & Management Logic
     function getStoredThreads() {
       try {
         return JSON.parse(localStorage.getItem('vk_contact_store') || '{}');
@@ -513,13 +857,28 @@
       }
     });
 
-    // Initial load
-    renderMetrics();
-    renderThreadList();
-    const threadKeys = Object.keys(getStoredThreads());
-    if (threadKeys.length > 0) {
-      selectThread(threadKeys[0]);
+    function loadInbox() {
+      renderMetrics();
+      renderThreadList();
+      const threadKeys = Object.keys(getStoredThreads());
+      if (threadKeys.length > 0) {
+        selectThread(threadKeys[0]);
+      }
     }
+
+    // Page Initialization
+    window.addEventListener('DOMContentLoaded', function() {
+      const overlay = document.getElementById('auth-overlay');
+      if (isSessionValid()) {
+        overlay.classList.add('hidden');
+        loadInbox();
+      } else {
+        overlay.classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('auth-password').focus();
+        }, 150);
+      }
+    });
   </script>
 </body>
 </html>
