@@ -247,3 +247,432 @@ p, .hero-text, .section-heading p, .compare-description {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--lime);
 }
+
+
+/* ========================================================
+   ENTERPRISE-GRADE / EXECUTIVE REDESIGN: CONTACT VK DESK
+   ======================================================== */
+
+.contact-desk {
+  background: #081410 !important;
+  color: #fff !important;
+  padding: 80px 24px 100px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  position: relative !important;
+}
+
+/* 1. Constrained Centered Canvas (No ultra-wide stretching) */
+.contact-desk > * {
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2. Discreet & Elegant Owner Banner */
+.owner-portal-banner {
+  background: rgba(215, 255, 79, 0.06) !important;
+  border: 1px solid rgba(215, 255, 79, 0.25) !important;
+  border-radius: 10px !important;
+  min-height: auto !important;
+  padding: 14px 22px !important;
+  margin-bottom: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  box-shadow: none !important;
+}
+
+.owner-portal-banner:hover {
+  background: rgba(215, 255, 79, 0.12) !important;
+  border-color: rgba(215, 255, 79, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.owner-portal-banner > span {
+  background: var(--lime) !important;
+  color: #07110e !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  border: none !important;
+}
+
+.owner-portal-banner strong {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: -0.01em !important;
+}
+
+.owner-portal-banner small {
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.owner-portal-banner > b {
+  font-size: 12px !important;
+  color: var(--lime) !important;
+  font-weight: 800 !important;
+}
+
+/* 3. Header & Introduction Layout */
+.contact-intro {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  align-items: end !important;
+  gap: 24px 40px !important;
+  margin-bottom: 28px !important;
+}
+
+.contact-intro > p {
+  grid-column: 1 / -1 !important;
+  color: var(--lime) !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 4px !important;
+}
+
+.contact-intro h2 {
+  font-size: clamp(32px, 3.8vw, 48px) !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.035em !important;
+  color: #ffffff !important;
+  line-height: 1.05 !important;
+  margin: 0 0 10px !important;
+}
+
+.contact-intro > span {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #94a3b8 !important;
+  max-width: 640px !important;
+  display: block !important;
+}
+
+.contact-safety {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
+  padding: 16px 20px !important;
+  max-width: 320px !important;
+}
+
+.contact-safety b {
+  color: var(--lime) !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.contact-safety p {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  margin: 6px 0 0 !important;
+}
+
+/* 4. Privacy Notice Strip */
+.private-chat-strip {
+  background: rgba(16, 37, 30, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-left: 3px solid var(--lime) !important;
+  border-radius: 8px !important;
+  padding: 14px 20px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 12px 24px !important;
+  margin-bottom: 32px !important;
+}
+
+.private-chat-strip strong {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: 0.04em !important;
+}
+
+.private-chat-strip p {
+  font-size: 13px !important;
+  color: #94a3b8 !important;
+  margin: 0 !important;
+  flex: 1 !important;
+  min-width: 260px !important;
+}
+
+.private-chat-strip small {
+  font-size: 11px !important;
+  color: #64748b !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* 5. Two-Pane Workspace Grid */
+.contact-workspace {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+
+/* 6. Contact Form (Left Pane) */
+.contact-form {
+  background: #0e1e18 !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 14px !important;
+  padding: 32px 36px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25) !important;
+  min-height: auto !important;
+}
+
+.contact-form-heading {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-bottom: 6px !important;
+}
+
+.contact-form-heading span {
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--lime) !important;
+  text-transform: uppercase !important;
+}
+
+.contact-form-heading b {
+  font-size: 12px !important;
+  color: #64748b !important;
+}
+
+.contact-form label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  color: #cbd5e1 !important;
+  text-transform: uppercase !important;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 8px !important;
+  padding: 13px 16px !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  font-family: inherit !important;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s !important;
+  outline: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #64748b !important;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--lime) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(215, 255, 79, 0.16) !important;
+}
+
+.contact-form select {
+  cursor: pointer !important;
+  appearance: auto !important;
+}
+
+.contact-form select option {
+  background: #0e1e18 !important;
+  color: #fff !important;
+  padding: 10px !important;
+}
+
+.contact-form label small {
+  align-self: flex-end !important;
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+  margin-top: -2px !important;
+}
+
+.contact-consent {
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  margin-top: 4px !important;
+}
+
+.contact-consent input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: var(--lime) !important;
+  cursor: pointer !important;
+  margin-top: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.contact-consent span {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+.contact-form button[type="submit"] {
+  background: var(--lime) !important;
+  color: #07110e !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 15px 28px !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin-top: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: #e2ff73 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(215, 255, 79, 0.28) !important;
+}
+
+/* 7. Conversation Panel (Right Pane) */
+.conversation-panel {
+  background: #0e1e18 !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 14px !important;
+  padding: 32px 36px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25) !important;
+  min-height: auto !important;
+}
+
+.conversation-empty {
+  color: #94a3b8 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  padding: 40px 24px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px dashed rgba(255, 255, 255, 0.12) !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  margin: auto 0 !important;
+}
+
+/* 8. Active Message Threads & Chat Bubbles */
+.conversation-thread {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  height: 100% !important;
+}
+
+.conversation-thread header {
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.conversation-thread header h3 {
+  font-size: 18px !important;
+  color: #fff !important;
+  margin: 0 0 6px !important;
+}
+
+.conversation-thread header p {
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  margin: 0 !important;
+}
+
+.conversation-messages {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  overflow-y: auto !important;
+  max-height: 380px !important;
+  padding-right: 6px !important;
+}
+
+.conversation-message {
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  max-width: 85% !important;
+}
+
+.conversation-message.visitor {
+  background: rgba(215, 255, 79, 0.12) !important;
+  border: 1px solid rgba(215, 255, 79, 0.25) !important;
+  color: #fff !important;
+  align-self: flex-end !important;
+  border-bottom-right-radius: 2px !important;
+}
+
+.conversation-message.owner {
+  background: #172d24 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  align-self: flex-start !important;
+  border-bottom-left-radius: 2px !important;
+}
+
+/* 9. Mobile & Tablet Responsiveness */
+@media (max-width: 860px) {
+  .contact-intro {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  
+  .contact-safety {
+    max-width: 100% !important;
+  }
+  
+  .contact-workspace {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .contact-form,
+  .conversation-panel {
+    padding: 24px 20px !important;
+  }
+  
+  .owner-portal-banner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
