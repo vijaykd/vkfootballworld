@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>VK Owner Inbox · VK Football World</title>
+  <link rel="shortcut icon" href="../../favicon.svg"/>
+  <link rel="icon" href="../../favicon.svg"/>
+  <link rel="stylesheet" href="../../assets/index-4PPbBUC8.css"/>
+  <style>
+    body {
+      background: #07110e;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .owner-header {
+      background: #081410;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px clamp(20px, 4vw, 60px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .owner-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .owner-brand-badge {
+      background: var(--lime);
+      color: #07110e;
+      font-weight: 950;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .owner-brand strong {
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .back-link {
+      color: var(--lime);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid rgba(215, 255, 79, 0.3);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .back-link:hover {
+      background: rgba(215, 255, 79, 0.1);
+      border-color: var(--lime);
+    }
+    .owner-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .metric-card {
+      background: #0e1e18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .metric-card span {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+    }
+    .metric-card strong {
+      font-size: 32px;
+      color: #fff;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+    .metric-card strong small {
+      font-size: 16px;
+      color: var(--lime);
+      font-weight: 700;
+    }
+    .inbox-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.85fr) minmax(400px, 1.15fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .inbox-sidebar {
+      background: #0e1e18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 600px;
+    }
+    .sidebar-header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sidebar-header h2 {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--lime);
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    .thread-list {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 540px;
+    }
+    .thread-item {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+      background: transparent;
+      border-left: 3px solid transparent;
+      color: inherit;
+      width: 100%;
+      box-sizing: border-box;
+      font: inherit;
+    }
+    .thread-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .thread-item.active {
+      background: rgba(215, 255, 79, 0.06);
+      border-left-color: var(--lime);
+    }
+    .thread-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .thread-nickname {
+      font-weight: 800;
+      color: #fff;
+    }
+    .thread-topic {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--lime);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .thread-subject {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .inbox-main {
+      background: #0e1e18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 600px;
+    }
+    .chat-header {
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .chat-header h3 {
+      font-size: 20px;
+      margin: 0 0 6px;
+      color: #fff;
+    }
+    .chat-header p {
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .chat-messages {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+      max-height: 380px;
+      padding-right: 8px;
+      margin-bottom: 20px;
+    }
+    .chat-bubble {
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 80%;
+      word-break: break-word;
+    }
+    .chat-bubble.visitor {
+      background: #152b22;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+    .chat-bubble.owner {
+      background: rgba(215, 255, 79, 0.15);
+      border: 1px solid rgba(215, 255, 79, 0.35);
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+      color: #fff;
+    }
+    .chat-bubble small {
+      display: block;
+      margin-top: 6px;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .reply-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+    .reply-form textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      resize: vertical;
+      min-height: 70px;
+    }
+    .reply-form textarea:focus {
+      border-color: var(--lime);
+      box-shadow: 0 0 0 3px rgba(215, 255, 79, 0.15);
+    }
+    .reply-form button {
+      align-self: flex-end;
+      background: var(--lime);
+      color: #07110e;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .reply-form button:hover {
+      background: #e2ff73;
+      transform: translateY(-2px);
+    }
+    .empty-state {
+      margin: auto;
+      text-align: center;
+      color: #94a3b8;
+      padding: 60px 20px;
+    }
+    .empty-state p {
+      font-size: 14px;
+      max-width: 320px;
+      line-height: 1.6;
+      margin: 12px auto 0;
+    }
+    @media (max-width: 860px) {
+      .inbox-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="owner-header">
+    <a class="owner-brand" href="../../">
+      <span class="owner-brand-badge">VK</span>
+      <strong>VK FOOTBALL WORLD</strong>
+    </a>
+    <a class="back-link" href="../../">← Return to Site</a>
+  </header>
+
+  <main class="owner-container">
+    <div class="metrics-row">
+      <div class="metric-card">
+        <span>Average Rating</span>
+        <strong id="avg-score">9.2 <small>/ 10</small></strong>
+      </div>
+      <div class="metric-card">
+        <span>Total Ratings</span>
+        <strong id="total-ratings">24</strong>
+      </div>
+      <div class="metric-card">
+        <span>Conversations</span>
+        <strong id="thread-count">0</strong>
+      </div>
+      <div class="metric-card">
+        <span>Owner Status</span>
+        <strong style="font-size: 18px; color: var(--lime);">🟢 Signed In as VK</strong>
+      </div>
+    </div>
+
+    <div class="inbox-layout">
+      <!-- Sidebar / Thread List -->
+      <aside class="inbox-sidebar">
+        <div class="sidebar-header">
+          <h2>Inbox Messages</h2>
+          <span id="unread-pill" style="font-size: 11px; color: #94a3b8; font-weight: 700;">0 threads</span>
+        </div>
+        <div class="thread-list" id="thread-list">
+          <!-- Rendered via JS -->
+        </div>
+      </aside>
+
+      <!-- Active Thread Detail -->
+      <section class="inbox-main" id="inbox-main">
+        <div class="empty-state" id="no-thread-selected">
+          <span style="font-size: 36px;">📬</span>
+          <p>Select a message thread on the left to read and reply as VK.</p>
+        </div>
+
+        <div id="thread-view" style="display: none; height: 100%; display: flex; flex-direction: column;">
+          <div class="chat-header">
+            <div>
+              <h3 id="view-subject">Conversation Subject</h3>
+              <p><span id="view-nickname">Visitor</span> · <span id="view-topic" class="thread-topic">HELP</span></p>
+            </div>
+            <button id="delete-btn" style="background: transparent; border: 1px solid #ef444455; color: #ef4444; padding: 6px 12px; border-radius: 4px; font-size: 11px; cursor: pointer;">Delete Thread</button>
+          </div>
+
+          <div class="chat-messages" id="chat-messages">
+            <!-- Messages rendered via JS -->
+          </div>
+
+          <form class="reply-form" id="reply-form">
+            <textarea id="reply-input" placeholder="Type your reply as VK…" required></textarea>
+            <button type="submit">SEND REPLY AS VK →</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    function getStoredThreads() {
+      try {
+        return JSON.parse(localStorage.getItem('vk_contact_store') || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveStoredThreads(threads) {
+      localStorage.setItem('vk_contact_store', JSON.stringify(threads));
+    }
+
+    function getRatings() {
+      try {
+        return JSON.parse(localStorage.getItem('vk_app_rating_data') || '{"average": 9.2, "total": 24}');
+      } catch (e) {
+        return { average: 9.2, total: 24 };
+      }
+    }
+
+    let activeThreadId = null;
+
+    function renderMetrics() {
+      const ratings = getRatings();
+      document.getElementById('avg-score').innerHTML = `${ratings.average} <small>/ 10</small>`;
+      document.getElementById('total-ratings').innerText = ratings.total;
+      
+      const threads = getStoredThreads();
+      const count = Object.keys(threads).length;
+      document.getElementById('thread-count').innerText = count;
+      document.getElementById('unread-pill').innerText = `${count} conversation${count === 1 ? '' : 's'}`;
+    }
+
+    function renderThreadList() {
+      const threads = getStoredThreads();
+      const listEl = document.getElementById('thread-list');
+      const threadIds = Object.keys(threads);
+
+      if (threadIds.length === 0) {
+        listEl.innerHTML = `
+          <div style="padding: 40px 20px; text-align: center; color: #64748b; font-size: 13px;">
+            No messages sent yet.<br/>Messages submitted by visitors will appear here instantly.
+          </div>
+        `;
+        document.getElementById('no-thread-selected').style.display = 'block';
+        document.getElementById('thread-view').style.display = 'none';
+        return;
+      }
+
+      listEl.innerHTML = threadIds.map(id => {
+        const item = threads[id];
+        const t = item.thread;
+        const isActive = id === activeThreadId ? 'active' : '';
+        return `
+          <button class="thread-item ${isActive}" onclick="selectThread('${id}')">
+            <div class="thread-meta">
+              <span class="thread-nickname">${t.nickname}</span>
+              <span class="thread-topic">${t.topic.toUpperCase()}</span>
+            </div>
+            <div class="thread-subject">${t.subject}</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectThread(id) {
+      activeThreadId = id;
+      const threads = getStoredThreads();
+      const item = threads[id];
+      if (!item) return;
+
+      document.getElementById('no-thread-selected').style.display = 'none';
+      const viewEl = document.getElementById('thread-view');
+      viewEl.style.display = 'flex';
+
+      document.getElementById('view-subject').innerText = item.thread.subject;
+      document.getElementById('view-nickname').innerText = item.thread.nickname;
+      document.getElementById('view-topic').innerText = item.thread.topic.toUpperCase();
+
+      const messagesEl = document.getElementById('chat-messages');
+      messagesEl.innerHTML = item.messages.map(m => {
+        const isOwner = m.sender === 'owner';
+        return `
+          <div class="chat-bubble ${isOwner ? 'owner' : 'visitor'}">
+            <strong>${isOwner ? '👑 VK (Owner)' : item.thread.nickname}:</strong>
+            <div>${m.body}</div>
+            <small>${new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small>
+          </div>
+        `;
+      }).join('');
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      renderThreadList();
+    }
+
+    document.getElementById('reply-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!activeThreadId) return;
+
+      const body = document.getElementById('reply-input').value.trim();
+      if (!body) return;
+
+      const threads = getStoredThreads();
+      if (!threads[activeThreadId]) return;
+
+      const newMsg = {
+        id: 'msg_owner_' + Date.now(),
+        sender: 'owner',
+        body: body,
+        createdAt: new Date().toISOString()
+      };
+
+      threads[activeThreadId].messages.push(newMsg);
+      threads[activeThreadId].thread.updatedAt = new Date().toISOString();
+      saveStoredThreads(threads);
+
+      document.getElementById('reply-input').value = '';
+      selectThread(activeThreadId);
+    });
+
+    document.getElementById('delete-btn').addEventListener('click', function() {
+      if (!activeThreadId) return;
+      if (confirm('Delete this conversation thread?')) {
+        const threads = getStoredThreads();
+        delete threads[activeThreadId];
+        saveStoredThreads(threads);
+        activeThreadId = null;
+        renderMetrics();
+        renderThreadList();
+      }
+    });
+
+    // Initial load
+    renderMetrics();
+    renderThreadList();
+    const threadKeys = Object.keys(getStoredThreads());
+    if (threadKeys.length > 0) {
+      selectThread(threadKeys[0]);
+    }
+  </script>
+</body>
+</html>
