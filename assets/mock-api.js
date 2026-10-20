@@ -263,3 +263,51 @@
     return originalFetch.apply(this, arguments);
   };
 })();
+
+  // Smooth scroll and active tab handling for all anchor links
+  document.addEventListener('DOMContentLoaded', function() {
+    function setActive(hash) {
+      if (!hash) hash = '#top';
+      document.querySelectorAll('.page-tabs a, .topbar nav a').forEach(function(a) {
+        if (a.getAttribute('href') === hash) {
+          a.classList.add('active');
+          a.setAttribute('aria-current', 'location');
+        } else {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (a) {
+        var href = a.getAttribute('href');
+        var targetId = href.slice(1);
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (history.pushState) {
+            history.pushState(null, '', href);
+          } else {
+            location.hash = href;
+          }
+          setActive(href);
+        }
+      }
+    });
+
+    // Update active tab on scroll
+    var sections = ['top', 'matches', 'watch', 'videos', 'stories', 'teams', 'play', 'contact'];
+    window.addEventListener('scroll', function() {
+      var scrollPos = window.scrollY + 120;
+      for (var i = sections.length - 1; i >= 0; i--) {
+        var el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActive('#' + sections[i]);
+          break;
+        }
+      }
+    }, { passive: true });
+  });
